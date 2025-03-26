@@ -10,6 +10,7 @@ namespace HeroArena
 
         private void Start()
         {
+            UIManager.Instance.OnFadeOutComplete -= ChangeScene;
             UIManager.Instance.OnFadeOutComplete += ChangeScene;
             fade = StartCoroutine(FadeSplash());
         }
