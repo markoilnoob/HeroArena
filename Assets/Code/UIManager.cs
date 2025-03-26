@@ -57,10 +57,12 @@ namespace HeroArena
                 Debug.Log(alphaValue);
             }
             fadeInCoroutine = null;
+            IMG_Fade.raycastTarget = false;
         }
 
         private IEnumerator FadeOutCO()
         {
+            IMG_Fade.raycastTarget = true;
             float alphaValue = 0f;
             Color colorIMG = Color.black;
             while (alphaValue <= 1f)
