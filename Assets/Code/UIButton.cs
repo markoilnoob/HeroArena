@@ -31,5 +31,12 @@ namespace HeroArena
         {
             onClick?.Invoke();
         }
+
+        public void SetButtonActive(bool newActive)
+        {
+            baseButton.interactable = newActive;
+        }
+
+        
     }
 }

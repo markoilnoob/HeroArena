@@ -31,9 +31,7 @@ namespace HeroArena
                 Destroy(gameObject);
             }
 
-            heroSelected = HeroClass.NONE;
+            HeroSelected = HeroClass.NONE;
         }
-
-
     }
 }
