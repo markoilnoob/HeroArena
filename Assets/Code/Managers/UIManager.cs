@@ -12,8 +12,10 @@ namespace HeroArena
         [SerializeField] private Image IMG_Fade;
 
         [SerializeField] private float timeToFade = 1.0f;
-        Coroutine fadeInCoroutine;
-        Coroutine fadeOutCoroutine;
+        //Coroutine fadeInCoroutine;
+        //Coroutine fadeOutCoroutine;
+        Coroutine fade;
+        public Action OnFadeInComplete;
         public Action OnFadeOutComplete;
 
         //Singleton
@@ -32,17 +34,57 @@ namespace HeroArena
         #region FadeSystem
         public void FadeIn()
         {
-            if (fadeInCoroutine == null)
-                fadeInCoroutine = StartCoroutine(FadeInCO());
+            //if (fadeInCoroutine == null)
+                //fadeInCoroutine = StartCoroutine(FadeInCO());
+            if (fade == null)
+                fade = StartCoroutine(Fade(Color.black, true));
             else
-                Debug.LogWarning("FadeIn is already running");
+                Debug.LogWarning("A Fade is already running");
         }
 
         public void FadeOut()
         {
-            fadeOutCoroutine = StartCoroutine(FadeOutCO());
+            if (fade == null)
+                fade = StartCoroutine(Fade(Color.black, false));
+            else
+                Debug.LogWarning("A Fade is already running");
+
+            //fadeOutCoroutine = StartCoroutine(FadeOutCO());
         }
 
+        private IEnumerator Fade(Color colorFade, bool IsFadeIn)
+        {
+            //Mouse cannot interact with others canvases
+            if (!IsFadeIn)
+                IMG_Fade.raycastTarget = true;
+
+            float alphaValue = (IsFadeIn) ? 1f : 0f;
+            float targetAlpha = (IsFadeIn) ? 0f : 1f;
+
+            //              FadeOut                                     FadeIn
+            while ((alphaValue <= targetAlpha && !IsFadeIn) || (alphaValue >= targetAlpha && IsFadeIn))
+            {
+                float temp = Time.deltaTime / timeToFade;
+                alphaValue += (IsFadeIn) ? -temp : temp;
+                colorFade.a = alphaValue;
+                IMG_Fade.color = colorFade;
+                yield return null;
+                Debug.Log(alphaValue);
+            }
+            fade = null;
+
+            if (IsFadeIn)
+            {
+                OnFadeInComplete?.Invoke();
+                IMG_Fade.raycastTarget = false;
+            }
+            else
+            {
+                OnFadeOutComplete?.Invoke();
+            }
+        }
+
+        /*
         private IEnumerator FadeInCO()
         {
             float alphaValue = 1f;
@@ -75,7 +117,7 @@ namespace HeroArena
             }
             fadeOutCoroutine = null;
             OnFadeOutComplete?.Invoke();
-        }
+        }*/
         #endregion
     }
 }

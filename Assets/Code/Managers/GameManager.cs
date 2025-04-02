@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 namespace HeroArena
@@ -52,6 +53,22 @@ namespace HeroArena
                     return true;
             }
             return false;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            // Ensure only one EventSystem exists after each scene load
+            var eventSystems = FindObjectsByType<EventSystem>(FindObjectsSortMode.None);
+            if (eventSystems.Length > 1)
+            {
+                // Destroy duplicates; this example destroys all but the first one found
+                for (int i = 1; i < eventSystems.Length; i++)
+                {
+                    Destroy(eventSystems[i].gameObject);
+                }
+            }
+
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         public void QuitApplication()
