@@ -12,7 +12,7 @@ namespace HeroArena.UI
         private void Start()
         {
             UIManager.Instance.FadeIn();
-            AudioManager.Instance.PlayMusic();
+            //AudioManager.Instance.PlayMusic();
 
             menuController = new MainMenuController();
             menuController.OnHeroChanged -= OnHeroChanged;

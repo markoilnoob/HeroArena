@@ -1,6 +1,6 @@
-using NUnit.Framework;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 namespace HeroArena
 {
@@ -8,54 +8,97 @@ namespace HeroArena
     {
         public static AudioManager Instance { get; private set; }
 
-        private AudioSource audioSource;
+        [Header("Audio Sources")]
+        public AudioSource musicSource;
+        public AudioSource sfxSource;
 
-        [SerializeField] private Dictionary<string, AudioClip> musicList;
-        [SerializeField] private Dictionary<string, AudioClip> sfxList;
+        [Header("Scene Audio Data")]
+        public List<SceneAudioSO> sceneAudioList;
 
-        private bool IsMusicPlaying = false;
+        private Dictionary<SceneNames, AudioClip> sceneMusicMap;
 
-        //Singleton
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
+                DontDestroyOnLoad(gameObject);
             }
             else
             {
                 Destroy(gameObject);
+                return;
             }
+
+            InitializeMusicMap();
         }
 
         private void Start()
         {
-            audioSource = GetComponent<AudioSource>();
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-        public void AddMusic(string musicName, AudioClip music)
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            if (!musicName.Trim().Equals(string.Empty) || musicName == null)
-                musicList.Add(musicName, music);
-            else
-                Debug.LogWarning("Audio clip not valid or the name is null");
+            PlayMusicForScene(GetCurrentSceneEnum(scene));
+            Debug.Log("OnSceneLoaded");
         }
 
-        public void PlayMusic()
+        private void InitializeMusicMap()
         {
-            if (audioSource != null)
+            sceneMusicMap = new Dictionary<SceneNames, AudioClip>();
+            foreach (var entry in sceneAudioList)
             {
-                audioSource.Play();
+                if (sceneMusicMap.ContainsKey(entry.scene))
+                {
+                    Debug.LogWarning("Problem in the key,change the value in the ScriptableObject");
+                    continue;
+
+                }
+                sceneMusicMap.Add(entry.scene, entry.musicClip);
             }
-            else
+        }
+
+        public void PlayMusicForScene(SceneNames scene)
+        {
+            if (sceneMusicMap.TryGetValue(scene, out AudioClip clip))
             {
-                Debug.LogError("The audio source is not assigned");
+                PlayMusic(clip);
+                Debug.Log("PlayMusicForScene");
             }
+        }
 
-            //if (musicList.Count > 0 && IsMusicPlaying)
-            //{
+        public void PlayMusic(AudioClip clip)
+        {
+            if (musicSource.clip != clip)
+            {
+                musicSource.clip = clip;
+                musicSource.Play();
+            }
+        }
 
-            //}
+        public void PlaySFX(AudioClip clip)
+        {
+            sfxSource.PlayOneShot(clip);
+        }
+
+        private SceneNames GetCurrentSceneEnum(Scene scene)
+        {
+            //return (SceneName)sceneIndex;
+
+            switch (scene.buildIndex)
+            {
+                case 0:
+                    return SceneNames.SCN_Main;
+                case 1:
+                    return SceneNames.SCN_SplashScreen;
+                case 2:
+                    return SceneNames.SCN_MainMenu;       //stessa cosa sopra
+                case 3:
+                    return SceneNames.SCN_Game;
+                default:
+                    return SceneNames.SCN_Main;
+            }
         }
     }
 }

@@ -25,7 +25,8 @@ namespace HeroArena
 
         private void Start()
         {
-            LoadScene("SCN_SplashScreen");
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         public void LoadScene(string sceneName)
@@ -58,7 +59,7 @@ namespace HeroArena
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             // Ensure only one EventSystem exists after each scene load
-            var eventSystems = FindObjectsByType<EventSystem>(FindObjectsSortMode.None);
+            EventSystem[] eventSystems = FindObjectsByType<EventSystem>(FindObjectsSortMode.None);
             if (eventSystems.Length > 1)
             {
                 // Destroy duplicates; this example destroys all but the first one found
@@ -67,8 +68,6 @@ namespace HeroArena
                     Destroy(eventSystems[i].gameObject);
                 }
             }
-
-            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         public void QuitApplication()

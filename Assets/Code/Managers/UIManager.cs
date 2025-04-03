@@ -34,8 +34,8 @@ namespace HeroArena
         #region FadeSystem
         public void FadeIn()
         {
-            //if (fadeInCoroutine == null)
-                //fadeInCoroutine = StartCoroutine(FadeInCO());
+            if (IMG_Fade == null)
+                return;
             if (fade == null)
                 fade = StartCoroutine(Fade(Color.black, true));
             else
@@ -44,6 +44,8 @@ namespace HeroArena
 
         public void FadeOut()
         {
+            if (IMG_Fade == null)
+                return;
             if (fade == null)
                 fade = StartCoroutine(Fade(Color.black, false));
             else
