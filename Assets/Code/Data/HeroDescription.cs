@@ -7,7 +7,9 @@ namespace HeroArena
         public HeroClass heroClass;
         public string heroName;
         public string heroDescription;
-        public Texture2D heroPortrait;
+        public Sprite heroPortrait;
+        public Sprite heroBigPortrait;
+
 
 
     }

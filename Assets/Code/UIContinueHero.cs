@@ -6,32 +6,42 @@ namespace HeroArena.UI
     public class UIContinueHero : MonoBehaviour
     {
         private Image IMG_Hero;
+        private Sprite image;
+        private HeroDescription HeroDescriptionSO;
+        private UIController controller;
+        private HeroClass heroClass1;
+        
 
         private void Awake()
         {
             IMG_Hero = GetComponent<Image>();
+            image = GetComponent<Sprite>();
         }
+
+        public void SetController(UIController inController)
+        {
+            controller = inController; 
+            MainMenuController mainmenucontroller = controller as MainMenuController; //1° modo per fare il cast
+            // MainMenuController mainmenucontroller = (MainMenuController) controller; un altro modo per fare il cast
+            mainmenucontroller.OnHeroChanged += SetHeroImage;
+        }
+
 
         public void SetHeroImage(HeroClass heroClass)
         {
-            switch (heroClass)
+            if (heroClass == HeroClass.NONE)
             {
-                case HeroClass.BARBARIAN:
-                    IMG_Hero.color = Color.blue;
-                    break;
-                case HeroClass.PALADIN:
-                    IMG_Hero.color = Color.yellow;
-                    break;
-                case HeroClass.ROGUE:
-                    IMG_Hero.color = Color.gray;
-                    break;
-                case HeroClass.RANGER:
-                    IMG_Hero.color = Color.green;
-                    break;
-                default:
-                    IMG_Hero.color = Color.magenta;
-                    break;
+                IMG_Hero.enabled = false;
+                
             }
+            else 
+            { 
+                HeroDescriptionSO = GameState.Instance.GetHeroDescription(heroClass);
+                IMG_Hero.enabled = true;
+                IMG_Hero.sprite = HeroDescriptionSO.heroPortrait;
+
+            }
+
         }
     }
 }

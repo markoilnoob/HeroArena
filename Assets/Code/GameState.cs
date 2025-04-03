@@ -8,8 +8,13 @@ namespace HeroArena
         public static GameState Instance { get; private set; }
 
         public Action<HeroClass> OnHeroSelected;
+        public HeroDescription[] HeroSO; //riferimento allo scriptable object
 
         private HeroClass heroSelected;
+
+       
+
+
         public HeroClass HeroSelected
         {
             get
@@ -22,6 +27,21 @@ namespace HeroArena
                 OnHeroSelected?.Invoke(heroSelected);
             }
         }
+
+
+         public HeroDescription GetHeroDescription(HeroClass heroClass)
+        {
+            for (int i = 0; i < HeroSO.Length; i++)
+            {
+                if (HeroSO[i].heroClass == heroClass)
+                {
+                    return HeroSO[i];
+                }
+            }
+            return null;
+        }
+
+
 
         //Singleton
         private void Awake()

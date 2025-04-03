@@ -90,6 +90,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4f08f6c3c117e498f1a7ca8770538c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeroSO:
+  - {fileID: 11400000, guid: 6d34c2b17a08e994c9292fc811d4b2c9, type: 2}
+  - {fileID: 11400000, guid: f2266b54c7940e04e8c1c95a2408b943, type: 2}
+  - {fileID: 11400000, guid: 212dc464ccc02dd47975fe787acd3ccd, type: 2}
+  - {fileID: 11400000, guid: 4e98f23611e5232459c59c9cb5d8640b, type: 2}
 --- !u!1 &7265559352396142409
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,6 +184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93d51b9d9c9ebd54591f3a5e6a58f502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicSource: {fileID: 0}
+  sfxSource: {fileID: 0}
+  sceneAudioList: []
 --- !u!82 &8289427167062685726
 AudioSource:
   m_ObjectHideFlags: 0

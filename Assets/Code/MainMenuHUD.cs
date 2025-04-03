@@ -17,13 +17,13 @@ namespace HeroArena.UI
             menuController = new MainMenuController();
             menuController.OnHeroChanged -= OnHeroChanged;
             menuController.OnHeroChanged += OnHeroChanged;
+            continueHero.SetController(menuController);
             menuController.BroadcastInitialValues();
         }
 
         private void OnHeroChanged(HeroClass heroClass)
         {
             UpdateContinueButton(heroClass);
-            UpdateImageHero(heroClass);
         }
 
         private void UpdateContinueButton(HeroClass heroClass)
@@ -38,9 +38,5 @@ namespace HeroArena.UI
             }
         }
 
-        private void UpdateImageHero(HeroClass heroClass)
-        {
-            continueHero.SetHeroImage(heroClass);
-        }
     }
 }
