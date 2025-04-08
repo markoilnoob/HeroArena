@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 namespace HeroArena
 {
@@ -14,6 +15,8 @@ namespace HeroArena
 
         [Header("Scene Audio Data")]
         public List<SceneAudioSO> sceneAudioList;
+
+        Coroutine fadeMusic;
 
         private Dictionary<SceneNames, AudioClip> sceneMusicMap;
 
@@ -77,6 +80,29 @@ namespace HeroArena
             }
         }
 
+        public void StopMusic()
+        {
+            if (fadeMusic == null)
+                fadeMusic = StartCoroutine(Fade(false));
+            else
+                Debug.LogWarning("The volume is already been changed");
+        }
+
+        IEnumerator Fade(bool IsFadeIn)
+        {
+            float currentVolume = (IsFadeIn) ? 0f : 1f;
+            float targetVolume = (IsFadeIn) ? 1f : 0f;
+            
+            while (currentVolume != targetVolume)
+            {
+                currentVolume += (IsFadeIn) ? Time.deltaTime : -Time.deltaTime;
+                currentVolume = Mathf.Clamp01(currentVolume);
+                musicSource.volume = currentVolume;
+                yield return null;
+            }
+            fadeMusic = null;
+        }
+
         public void PlaySFX(AudioClip clip)
         {
             sfxSource.PlayOneShot(clip);
@@ -100,5 +126,7 @@ namespace HeroArena
                     return SceneNames.SCN_Main;
             }
         }
+
+
     }
 }
