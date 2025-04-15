@@ -452,6 +452,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e636c6be733805e44ba48b44f4742bf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAvatar: {fileID: 370673613}
+  enemyAvatar: {fileID: 1596489080}
 --- !u!1001 &1301902531
 PrefabInstance:
   m_ObjectHideFlags: 0

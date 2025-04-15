@@ -4,6 +4,9 @@ namespace HeroArena
 {
     public class ArenaGameManager : MonoBehaviour
     {
+        [Header("Hero Avatar Options")]
+        [SerializeField] private HeroAvatar playerAvatar;
+        [SerializeField] private HeroAvatar enemyAvatar;
         public static ArenaGameManager Instance { get; private set; }
 
         private void Awake()
@@ -28,6 +31,16 @@ namespace HeroArena
 
         private void StartGame()
         {
+            HeroClass playerHeroClass = GameState.Instance.HeroSelected;
+            if (playerHeroClass == HeroClass.NONE)
+            {
+                playerHeroClass = HeroArenaUtils.GetRandomEnumValue<HeroClass>(1,0);
+            }
+            playerAvatar.SetAvatar(playerHeroClass);
+            
+            HeroClass enemyHeroClass = HeroArenaUtils.GetRandomEnumValue<HeroClass>(1, 0);
+            enemyAvatar.SetAvatar(enemyHeroClass);
+
             Debug.Log("Game Started");
         }
     }

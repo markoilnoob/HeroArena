@@ -19,14 +19,16 @@ namespace HeroArena
 
         private void Start()
         {
-            if (heroToDisplay != HeroClass.NONE)
-            {
-                SetAvatar(heroToDisplay);
-            }
-            else
-            {
-                gameObject.SetActive(false);
-            }
+            transform.localScale = Vector3.zero;
+
+            //if (heroToDisplay != HeroClass.NONE)
+            //{
+            //    SetAvatar(heroToDisplay);
+            //}
+            //else
+            //{
+            //    gameObject.SetActive(false);
+            //}
         }
 
         public void SetAvatar(HeroClass heroClass)
