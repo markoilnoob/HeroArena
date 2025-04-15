@@ -35,7 +35,10 @@ namespace HeroArena
         public void FadeIn()
         {
             if (IMG_Fade == null)
+            {
+                StartCoroutine(FakeFade(true));
                 return;
+            }
             if (fade == null)
                 fade = StartCoroutine(Fade(Color.black, true));
             else
@@ -45,7 +48,10 @@ namespace HeroArena
         public void FadeOut()
         {
             if (IMG_Fade == null)
+            {
+                StartCoroutine(FakeFade(false));
                 return;
+            }
             if (fade == null)
                 fade = StartCoroutine(Fade(Color.black, false));
             else
@@ -79,6 +85,19 @@ namespace HeroArena
             {
                 OnFadeInComplete?.Invoke();
                 IMG_Fade.raycastTarget = false;
+            }
+            else
+            {
+                OnFadeOutComplete?.Invoke();
+            }
+        }
+
+        IEnumerator FakeFade(bool IsFadeIn)
+        {
+            yield return new WaitForSeconds(1f);
+            if (IsFadeIn)
+            {
+                OnFadeInComplete?.Invoke();
             }
             else
             {
