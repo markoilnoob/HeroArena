@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ef335436d3088004ca07469bc4cbbd08
+guid: f774bdee476149744b4f1dd942bf6650
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4420327083226988077
-    second: T_Rogue_Full_Art_0
+      213: -7820190388750190527
+    second: T_DodgeIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: T_Rogue_Full_Art_0
+      name: T_DodgeIcon_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1024
-        height: 1024
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3d1873d00f7d7a2c0800000000000000
-      internalID: -4420327083226988077
+      spriteID: 148fe9a464a197390800000000000000
+      internalID: -7820190388750190527
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      T_Rogue_Full_Art_0: -4420327083226988077
+      T_DodgeIcon_0: -7820190388750190527
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
