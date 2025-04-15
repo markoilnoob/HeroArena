@@ -16,4 +16,4 @@ MonoBehaviour:
   heroName: Rogue
   heroDescription: 
   heroPortrait: {fileID: 21300000, guid: b18f0010446c2634dbf7ac532cabf98b, type: 3}
-  heroBigPortrait: {fileID: 0}
+  heroBigPortrait: {fileID: 21300000, guid: ef335436d3088004ca07469bc4cbbd08, type: 3}

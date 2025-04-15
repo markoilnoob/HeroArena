@@ -16,4 +16,4 @@ MonoBehaviour:
   heroName: Ranger
   heroDescription: 
   heroPortrait: {fileID: 21300000, guid: bf9572313e037574c96135e034d4aa57, type: 3}
-  heroBigPortrait: {fileID: 0}
+  heroBigPortrait: {fileID: 21300000, guid: 1c002ed5a831d854db35cba5253cc04e, type: 3}
