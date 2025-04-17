@@ -1,9 +1,7 @@
 using UnityEngine;
 
-
 namespace HeroArena
 {
-
     [RequireComponent(typeof(HeroFactory))]
     public class ArenaGameManager : MonoBehaviour
     {
@@ -49,15 +47,16 @@ namespace HeroArena
             {
                 playerHeroClass = HeroArenaUtils.GetRandomEnumValue<HeroClass>(1,0);
             }
-            //playerAvatar.SetAvatar(playerHeroClass);
             
             HeroClass enemyHeroClass = HeroArenaUtils.GetRandomEnumValue<HeroClass>(1, 0);
-            //enemyAvatar.SetAvatar(enemyHeroClass);
 
             Debug.Log("Game Started");
 
             PlayerHero = heroFactory.CreateHero(playerHeroClass, playerGO);
             EnemyHero = heroFactory.CreateHero(enemyHeroClass, enemyGO);
+
+            playerAvatar.SetAvatar(PlayerHero);
+            enemyAvatar.SetAvatar(EnemyHero);
         }
     }
 }

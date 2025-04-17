@@ -7,7 +7,6 @@ namespace HeroArena
     public class HeroAvatar : MonoBehaviour
     {
         [Header("Eroe da impostare")]
-        [SerializeField] private HeroClass heroToDisplay = HeroClass.NONE;
         [SerializeField] private float duration = 1.2f;
 
         private SpriteRenderer spriteRenderer;
@@ -31,20 +30,10 @@ namespace HeroArena
             //}
         }
 
-        public void SetAvatar(HeroClass heroClass)
+        public void SetAvatar(Hero hero)
         {
-            heroToDisplay = heroClass;
-
-            // Recupera la descrizione dell'eroe dal GameState
-            HeroDescription description = GameState.Instance.GetHeroDescription(heroClass);
-            if (description == null || description.heroBigPortrait == null)
-            {
-                Debug.LogWarning($"Sprite mancante per {heroClass}");
-                return;
-            }
-
             // Imposta lo sprite dell'avatar
-            spriteRenderer.sprite = description.heroBigPortrait;
+            spriteRenderer.sprite = hero.GetHeroDescription().heroBigPortrait;
             transform.localScale = Vector3.zero;
 
             // Avvia l'animazione di comparsa

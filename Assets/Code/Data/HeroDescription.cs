@@ -9,8 +9,5 @@ namespace HeroArena
         public string heroDescription;
         public Sprite heroPortrait;
         public Sprite heroBigPortrait;
-
-
-
     }
 }

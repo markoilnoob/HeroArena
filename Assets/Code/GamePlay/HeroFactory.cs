@@ -50,12 +50,12 @@ namespace HeroArena
             // Find the correct Hero type
             if (heroTypeMap.TryGetValue(heroClass, out Type heroType))
             {
-                Hero hero = (Hero)gameObject.AddComponent(heroType);
+                Hero hero = (Hero)heroGO.AddComponent(heroType);
+                hero.Init();
 
                 return hero;
             }
             return null;
         }
     }
-
 }

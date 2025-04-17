@@ -7,6 +7,7 @@ namespace HeroArena
         public override void Init()
         {
             Class = HeroClass.RANGER;
+            description = HeroArenaAssetLoader.FetchHeroDescription(Class);
         }
     }
 }

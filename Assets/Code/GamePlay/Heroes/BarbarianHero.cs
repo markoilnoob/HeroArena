@@ -7,6 +7,7 @@ namespace HeroArena
         public override void Init()
         {
             Class = HeroClass.BARBARIAN;
+            description = HeroArenaAssetLoader.FetchHeroDescription(Class);
         }
     }
 }
