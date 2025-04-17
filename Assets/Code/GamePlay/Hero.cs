@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace HeroArena 
@@ -6,10 +8,23 @@ namespace HeroArena
     {
         public HeroClass Class;
         protected HeroDescription description;
+        protected HeroAbilitiesFactory abilitiesFactory;
+        protected List<HeroAbility> heroAbilities = new List<HeroAbility>();
 
         public HeroDescription GetHeroDescription()
         {
             return description;
+        }
+
+        public List<HeroAbility> GetHeroAbilities()
+        {
+            if (heroAbilities.Count > 0)
+                return heroAbilities;
+            else
+            {
+                heroAbilities = abilitiesFactory.CreateAbilities();
+                return heroAbilities;
+            }
         }
 
         virtual public void Init()
