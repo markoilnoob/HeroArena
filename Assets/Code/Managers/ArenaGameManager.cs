@@ -1,9 +1,15 @@
 using UnityEngine;
 
+
 namespace HeroArena
 {
+
+    [RequireComponent(typeof(HeroFactory))]
     public class ArenaGameManager : MonoBehaviour
     {
+        private HeroFactory heroFactory;
+        private Hero PlayerHero;
+        private Hero EnemyHero;
         [Header("Hero Avatar Options")]
         [SerializeField] private HeroAvatar playerAvatar;
         [SerializeField] private HeroAvatar enemyAvatar;
@@ -19,6 +25,9 @@ namespace HeroArena
             {
                 Destroy(gameObject);
             }
+
+            heroFactory = GetComponent<HeroFactory>();
+
         }
 
         private void Start()
@@ -36,12 +45,15 @@ namespace HeroArena
             {
                 playerHeroClass = HeroArenaUtils.GetRandomEnumValue<HeroClass>(1,0);
             }
-            playerAvatar.SetAvatar(playerHeroClass);
+            //playerAvatar.SetAvatar(playerHeroClass);
             
             HeroClass enemyHeroClass = HeroArenaUtils.GetRandomEnumValue<HeroClass>(1, 0);
-            enemyAvatar.SetAvatar(enemyHeroClass);
+            //enemyAvatar.SetAvatar(enemyHeroClass);
 
             Debug.Log("Game Started");
+
+            PlayerHero = heroFactory.CreateHero(playerHeroClass);
+            EnemyHero = heroFactory.CreateHero(enemyHeroClass);
         }
     }
 }
