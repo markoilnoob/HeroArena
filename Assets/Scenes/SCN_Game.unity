@@ -418,6 +418,7 @@ GameObject:
   m_Component:
   - component: {fileID: 967694184}
   - component: {fileID: 967694185}
+  - component: {fileID: 967694186}
   m_Layer: 0
   m_Name: ArenaManager
   m_TagString: Untagged
@@ -454,6 +455,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerAvatar: {fileID: 370673613}
   enemyAvatar: {fileID: 1596489080}
+  playerGO: {fileID: 370673610}
+  enemyGO: {fileID: 1596489077}
+--- !u!114 &967694186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967694183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4e9a115f067f6443acec4441fd0ccc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1301902531
 PrefabInstance:
   m_ObjectHideFlags: 0

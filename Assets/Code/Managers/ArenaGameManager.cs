@@ -13,6 +13,10 @@ namespace HeroArena
         [Header("Hero Avatar Options")]
         [SerializeField] private HeroAvatar playerAvatar;
         [SerializeField] private HeroAvatar enemyAvatar;
+
+        [SerializeField] private GameObject playerGO;
+        [SerializeField] private GameObject enemyGO;
+
         public static ArenaGameManager Instance { get; private set; }
 
         private void Awake()
@@ -52,8 +56,8 @@ namespace HeroArena
 
             Debug.Log("Game Started");
 
-            PlayerHero = heroFactory.CreateHero(playerHeroClass);
-            EnemyHero = heroFactory.CreateHero(enemyHeroClass);
+            PlayerHero = heroFactory.CreateHero(playerHeroClass, playerGO);
+            EnemyHero = heroFactory.CreateHero(enemyHeroClass, enemyGO);
         }
     }
 }
