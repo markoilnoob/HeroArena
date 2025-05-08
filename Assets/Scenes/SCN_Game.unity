@@ -558,6 +558,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1420711294}
+  - component: {fileID: 1420711296}
   - component: {fileID: 1420711295}
   m_Layer: 5
   m_Name: EnemyAbilities
@@ -611,6 +612,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1420711296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420711293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f248c5a6a9a9d5549a53528499883dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1596489077
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +920,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2077861708}
+  - component: {fileID: 2077861710}
   - component: {fileID: 2077861709}
   m_Layer: 5
   m_Name: PlayerAbilities
@@ -960,6 +974,18 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2077861710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077861707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f248c5a6a9a9d5549a53528499883dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2103507784
 GameObject:
   m_ObjectHideFlags: 0
