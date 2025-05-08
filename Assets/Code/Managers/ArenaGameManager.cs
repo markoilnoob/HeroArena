@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace HeroArena
@@ -6,14 +7,16 @@ namespace HeroArena
     public class ArenaGameManager : MonoBehaviour
     {
         private HeroFactory heroFactory;
-        private Hero PlayerHero;
-        private Hero EnemyHero;
+        public Hero PlayerHero { get; private set; }
+        public Hero EnemyHero { get; private set; }
         [Header("Hero Avatar Options")]
         [SerializeField] private HeroAvatar playerAvatar;
         [SerializeField] private HeroAvatar enemyAvatar;
 
         [SerializeField] private GameObject playerGO;
         [SerializeField] private GameObject enemyGO;
+
+        public Action<Hero, bool /* IsPlayer */> OnHeroCreated;
 
         public static ArenaGameManager Instance { get; private set; }
 
@@ -53,7 +56,10 @@ namespace HeroArena
             Debug.Log("Game Started");
 
             PlayerHero = heroFactory.CreateHero(playerHeroClass, playerGO);
+            OnHeroCreated?.Invoke(PlayerHero, true);
+
             EnemyHero = heroFactory.CreateHero(enemyHeroClass, enemyGO);
+            OnHeroCreated?.Invoke(EnemyHero, false);
 
             playerAvatar.SetAvatar(PlayerHero);
             enemyAvatar.SetAvatar(EnemyHero);
