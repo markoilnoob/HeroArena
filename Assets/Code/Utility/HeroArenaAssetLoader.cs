@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace HeroArena
@@ -17,6 +19,23 @@ namespace HeroArena
                 }
             }
             return null;
+        }
+
+        public static List<HeroAbilityDescription> FetchHeroAbilities(HeroClass heroClass)
+        {
+            HeroAbilityDescription[] heroAbilities = Resources.LoadAll<HeroAbilityDescription>("HeroAbilities");
+
+            List<HeroAbilityDescription> filteredAbilities = null;
+
+            foreach (HeroAbilityDescription ability in heroAbilities)
+            {
+                if (ability.availableClasses.Contains(heroClass))
+                {
+                    filteredAbilities.Add(ability);
+                }
+            }
+
+            return filteredAbilities;
         }
     }
 }
