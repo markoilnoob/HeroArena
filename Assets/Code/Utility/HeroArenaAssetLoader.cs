@@ -25,7 +25,7 @@ namespace HeroArena
         {
             HeroAbilityDescription[] heroAbilities = Resources.LoadAll<HeroAbilityDescription>("HeroAbilities");
 
-            List<HeroAbilityDescription> filteredAbilities = null;
+            List<HeroAbilityDescription> filteredAbilities = new List<HeroAbilityDescription>();
 
             foreach (HeroAbilityDescription ability in heroAbilities)
             {

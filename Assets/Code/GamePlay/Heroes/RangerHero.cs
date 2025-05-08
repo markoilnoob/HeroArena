@@ -9,6 +9,7 @@ namespace HeroArena
             Class = HeroClass.RANGER;
             description = HeroArenaAssetLoader.FetchHeroDescription(Class);
             abilitiesFactory = new RangerAbilitiesFactory();
+            abilitiesFactory.Init(this);
         }
     }
 }

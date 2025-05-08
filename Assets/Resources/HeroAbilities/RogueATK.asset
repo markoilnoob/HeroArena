@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73df7f40e186c043bc2773d7fc683c7, type: 3}
   m_Name: RogueATK
   m_EditorClassIdentifier: 
-  availableClasses: 
-  abilityID: 
+  availableClasses: 03000000
+  abilityID: 4
   abilityName: 
   abilityDescription: 
   sprite: {fileID: 0}
