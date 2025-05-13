@@ -10,6 +10,13 @@ namespace HeroArena
         protected HeroDescription description;
         protected HeroAbilitiesFactory abilitiesFactory;
         protected List<HeroAbility> heroAbilities = new List<HeroAbility>();
+        private IStatCalculationStrategy statCalculationStrategy;
+
+        public void SetStrategy (IStatCalculationStrategy strategy)
+        {
+            statCalculationStrategy = strategy;
+            //TODO ricalcolo delle statistiche
+        }
 
         public HeroDescription GetHeroDescription()
         {

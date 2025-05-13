@@ -6,6 +6,9 @@ namespace HeroArena
 {
     public class HeroFactory : MonoBehaviour
     {
+        [SerializeField] private ScriptableObject strategyAsset;
+        private IStatCalculationStrategy strategy;
+
         //dictionary <key, value>
         // Mapping from HeroClass to the corresponding Hero-derived type
         private static readonly Dictionary<HeroClass, Type> heroTypeMap = new()
@@ -15,6 +18,13 @@ namespace HeroArena
             { HeroClass.ROGUE, typeof(RogueHero) },
             { HeroClass.RANGER, typeof(RangerHero) },
         };
+
+        public void Awake()
+        {
+            //strategy = (IStatCalculationStrategy)strategyAsset;   CAST Type 1
+
+            strategy = strategyAsset as IStatCalculationStrategy;   //CAST Type 2
+        }
 
         public Hero CreateHero(HeroClass heroClass, GameObject heroGO)
         {
