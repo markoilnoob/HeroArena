@@ -10,6 +10,19 @@ namespace HeroArena
         protected HeroDescription description;
         protected HeroAbilitiesFactory abilitiesFactory;
         protected List<HeroAbility> heroAbilities = new List<HeroAbility>();
+        HeroStats heroStats;
+        public HeroStats HeroStats
+        {
+            get
+            {
+                return heroStats;
+            }
+            private set
+            {
+                heroStats = value;
+            }
+        }
+
         private IStatCalculationStrategy statCalculationStrategy;
 
         public void SetStrategy (IStatCalculationStrategy strategy)

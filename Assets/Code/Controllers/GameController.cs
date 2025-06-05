@@ -9,6 +9,7 @@ namespace HeroArena.UI
     {
         public Action<HeroDescription, bool /* IsPlayer */> OnDescriptionReady;
         public Action<List<HeroAbility>, bool> OnAbilitiesReady;
+        public Action<HeroStats, bool> OnHeroStatsCalculated;
 
         public override void BindCallbacks()
         {
@@ -20,6 +21,7 @@ namespace HeroArena.UI
         {
             OnDescriptionReady?.Invoke(hero.GetHeroDescription(), IsPlayer);
             OnAbilitiesReady?.Invoke(hero.GetHeroAbilities(), IsPlayer);
+            OnHeroStatsCalculated?.Invoke(hero.HeroStats, IsPlayer);
         }
 
         public override void BroadcastInitialValues()
@@ -28,12 +30,14 @@ namespace HeroArena.UI
             {
                 OnDescriptionReady?.Invoke(ArenaGameManager.Instance.PlayerHero.GetHeroDescription(), true);
                 OnAbilitiesReady?.Invoke(ArenaGameManager.Instance.PlayerHero.GetHeroAbilities(), true);
+                OnHeroStatsCalculated?.Invoke(ArenaGameManager.Instance.PlayerHero.HeroStats, true);
             }
 
             if (ArenaGameManager.Instance.EnemyHero)
             {
                 OnDescriptionReady?.Invoke(ArenaGameManager.Instance.EnemyHero.GetHeroDescription(), false);
                 OnAbilitiesReady?.Invoke(ArenaGameManager.Instance.EnemyHero.GetHeroAbilities(), false);
+                OnHeroStatsCalculated?.Invoke(ArenaGameManager.Instance.EnemyHero.HeroStats, false);
             }
         }
     }
