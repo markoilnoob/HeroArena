@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -37,6 +38,16 @@ namespace HeroArena
             baseButton.interactable = newActive;
         }
 
-        
+        public void SetSprite(Sprite sprite)
+        {
+            baseButton.image.sprite = sprite;
+
+            baseButton.GetComponent<RectTransform>().sizeDelta = sprite.textureRect.size;
+        }
+
+        public void SetText(string text)
+        {
+            baseButton.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        }
     }
 }

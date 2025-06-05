@@ -505,6 +505,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6323175003169968497, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: IMG_Fade
+      value: 
+      objectReference: {fileID: 188358730}
     - target: {fileID: 8697306884071731431, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
       propertyPath: m_Name
       value: --- Managers

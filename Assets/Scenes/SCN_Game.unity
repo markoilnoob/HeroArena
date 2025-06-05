@@ -492,6 +492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e9a115f067f6443acec4441fd0ccc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  strategyAsset: {fileID: 0}
 --- !u!1001 &1301902531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -604,8 +605,8 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
+  m_Spacing: 10
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -624,6 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248c5a6a9a9d5549a53528499883dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnBasePrefab: {fileID: 2550780656987803267, guid: 8de3c2dbeaea91c47bbe19685c68bcc8, type: 3}
   _IsPlayer: 0
 --- !u!1 &1596489077
 GameObject:
@@ -967,8 +969,8 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
+  m_Spacing: 10
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
@@ -987,6 +989,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f248c5a6a9a9d5549a53528499883dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnBasePrefab: {fileID: 2550780656987803267, guid: 8de3c2dbeaea91c47bbe19685c68bcc8, type: 3}
   _IsPlayer: 1
 --- !u!1 &2103507784
 GameObject:

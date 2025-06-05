@@ -16,4 +16,4 @@ MonoBehaviour:
   abilityID: 4
   abilityName: 
   abilityDescription: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: d209eab9a13516d44bf1935b7cae2032, type: 3}
