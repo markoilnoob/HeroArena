@@ -25,6 +25,13 @@ namespace HeroArena
 
         private IStatCalculationStrategy statCalculationStrategy;
 
+        protected void HeroStatsInit()
+        {
+            HeroStats = gameObject.AddComponent<HeroStats>();
+            HeroPrimaryAtributes temp = GameState.Instance.GetHeroDescription(Class).primaryAtributes;
+            HeroStats.Init(temp);
+        }
+
         public void SetStrategy (IStatCalculationStrategy strategy)
         {
             statCalculationStrategy = strategy;

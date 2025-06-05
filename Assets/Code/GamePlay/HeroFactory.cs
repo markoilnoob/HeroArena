@@ -63,6 +63,8 @@ namespace HeroArena
                 Hero hero = (Hero)heroGO.AddComponent(heroType);
                 hero.Init();
 
+                hero.HeroStats.SetCalculationStrategy(strategy);
+
                 return hero;
             }
             return null;

@@ -10,6 +10,7 @@ namespace HeroArena
             description = HeroArenaAssetLoader.FetchHeroDescription(Class);
             abilitiesFactory = new RogueAbilitiesFactory();
             abilitiesFactory.Init(this);
+            HeroStatsInit();
         }
     }
 }

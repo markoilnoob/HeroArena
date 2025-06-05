@@ -29,7 +29,7 @@ namespace HeroArena
         }
 
 
-         public HeroDescription GetHeroDescription(HeroClass heroClass)
+        public HeroDescription GetHeroDescription(HeroClass heroClass)
         {
             for (int i = 0; i < HeroSO.Length; i++)
             {

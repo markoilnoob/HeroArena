@@ -17,3 +17,7 @@ MonoBehaviour:
   heroDescription: 
   heroPortrait: {fileID: 21300000, guid: 5007159d8094d0748ba6c8dc9cc16f05, type: 3}
   heroBigPortrait: {fileID: 21300000, guid: 6684ecaeb0ee81746860a4010eeab6ae, type: 3}
+  primaryAtributes:
+    strength: 8
+    agility: 6
+    constitution: 7

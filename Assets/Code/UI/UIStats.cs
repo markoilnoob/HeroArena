@@ -29,7 +29,9 @@ namespace HeroArena.UI
         {
             if (_IsPlayer == isPlayer)
             {
-
+                health.text = $"{heroStats.CurrentHealth} hp";
+                stamina.text = heroStats.CurrentStamina.ToString();
+                dodge.text = heroStats.CurrentDodge.ToString();
             }
         }
     }

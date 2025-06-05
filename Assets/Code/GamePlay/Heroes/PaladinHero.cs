@@ -10,6 +10,7 @@ namespace HeroArena
             description = HeroArenaAssetLoader.FetchHeroDescription(Class);
             abilitiesFactory = new PaladinAbilitiesFactory();
             abilitiesFactory.Init(this);
+            HeroStatsInit();
         }
     }
 }

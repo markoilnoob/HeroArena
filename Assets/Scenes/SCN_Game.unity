@@ -1257,7 +1257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e9a115f067f6443acec4441fd0ccc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strategyAsset: {fileID: 0}
+  strategyAsset: {fileID: 11400000, guid: 2e717663c9367004ab24aa5c4039ea80, type: 2}
 --- !u!1 &978294714
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1848,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 531636349822023315, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931632895858384944, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931632895858384944, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931632895858384944, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931632895858384944, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931632895858384944, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931632895858384944, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8697306884071731431, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}

@@ -10,6 +10,7 @@ namespace HeroArena
             description = HeroArenaAssetLoader.FetchHeroDescription(Class);
             abilitiesFactory = new BarbarianAbilitiesFactory();
             abilitiesFactory.Init(this);
+            HeroStatsInit();
         }
     }
 }

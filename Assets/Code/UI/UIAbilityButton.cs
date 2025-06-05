@@ -11,21 +11,12 @@ namespace HeroArena.UI
 
         private void Awake() => button = GetComponent<UIButton>();
 
-        private void Start()
-        {
-            button.onClick -= ActivateAbility;
-            button.onClick += ActivateAbility;
-        }
-
         public void Init(HeroAbility ability)
         {
             button.SetSprite(ability.abilityDescription.sprite);
             button.SetText(null);
-        }
-
-        private void ActivateAbility()
-        {
-            Debug.Log("Yippe!!!");
+            button.onClick -= ability.ActivateAbility;
+            button.onClick += ability.ActivateAbility;
         }
     }
 }
