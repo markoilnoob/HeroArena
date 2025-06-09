@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace HeroArena 
 { 
@@ -11,6 +12,9 @@ namespace HeroArena
         protected HeroAbilitiesFactory abilitiesFactory;
         protected List<HeroAbility> heroAbilities = new List<HeroAbility>();
         HeroStats heroStats;
+
+        public Action<HeroStats, bool> OnHeroStatsUpdated;
+        
         public HeroStats HeroStats
         {
             get
@@ -58,6 +62,42 @@ namespace HeroArena
         {
             //used by the child classes
             //inizialization
+        }
+
+        // Utility UI Callbacks
+        public void HeroStatsUpdated()
+        {
+            bool IsPlayer = false;
+            
+            IsPlayer = ArenaGameManager.Instance.PlayerHero == this;
+            
+            OnHeroStatsUpdated?.Invoke(HeroStats, IsPlayer);
+        }
+
+        // Stats methods
+        // TODO: Create a string based system?
+        public void ApplyHeroDamage(float damage)
+        {
+            HeroStats.ApplyDamage(damage);
+            HeroStatsUpdated();
+        }
+
+        public void ApplyHeroHeal(float health)
+        {
+            HeroStats.ApplyHeal(health);
+            HeroStatsUpdated();
+        }
+
+        public void UseHeroStamina(float stamina)
+        {
+            HeroStats.UseStamina(stamina);
+            HeroStatsUpdated();
+        }
+
+        public void ApplyHeroDodge(float dodge)
+        {
+            HeroStats.ApplyDodge(dodge);
+            HeroStatsUpdated();
         }
     }         
 }

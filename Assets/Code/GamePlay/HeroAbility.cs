@@ -7,24 +7,42 @@ namespace HeroArena
     [Serializable]
     public class HeroAbility : MonoBehaviour
     {
-        public HeroAbilityDescription abilityDescription;
+        public HeroAbilityDescription abilityDescription { get; private set; }
         private List<AbilityEffect> abilityEffects;
-        
+        public int level = 1;
+        private Hero hero;
+        HeroAbilityContext abilityContext;
 
-
-        public void Initialized()
+        public void Initialized(HeroAbilityDescription inAbilityDescription, Hero inHero)
         {
+            hero = inHero;
+            abilityDescription = inAbilityDescription;
             abilityEffects = new List<AbilityEffect>();
             abilityEffects = abilityDescription.abilityEffects;
         }
 
         public void ActivateAbility()
         {
+            // TODO: Single controller for each hero
+            if (ArenaGameManager.Instance.PlayerHero == hero)
+            {
+                abilityContext.Source = ArenaGameManager.Instance.PlayerHero;
+                abilityContext.Target = ArenaGameManager.Instance.EnemyHero;
+            }
+            else
+            {
+                abilityContext.Source = ArenaGameManager.Instance.EnemyHero;
+                abilityContext.Target = ArenaGameManager.Instance.PlayerHero;
+            }
+
+            abilityContext.AbilityLevel = level;
+            
             foreach (AbilityEffect effect in abilityEffects)
             {
-                //effect.Execute(context);
+                effect.Execute(abilityContext);
             }
         }
-
+        
+        
     }
 }

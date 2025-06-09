@@ -22,6 +22,10 @@ namespace HeroArena.UI
             OnDescriptionReady?.Invoke(hero.GetHeroDescription(), IsPlayer);
             OnAbilitiesReady?.Invoke(hero.GetHeroAbilities(), IsPlayer);
             OnHeroStatsCalculated?.Invoke(hero.HeroStats, IsPlayer);
+            
+            // Bind controller to when hero stats change on our hero
+            // TODO: Create a single controller for each hero at runtime
+            hero.OnHeroStatsUpdated += OnHeroStatsCalculated;
         }
 
         public override void BroadcastInitialValues()

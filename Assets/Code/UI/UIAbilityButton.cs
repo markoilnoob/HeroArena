@@ -15,8 +15,12 @@ namespace HeroArena.UI
         {
             button.SetSprite(ability.abilityDescription.sprite);
             button.SetText(null);
+            
+            // TODO: Single controller based for each hero should help to decouple this
             button.onClick -= ability.ActivateAbility;
             button.onClick += ability.ActivateAbility;
         }
+        
+        
     }
 }

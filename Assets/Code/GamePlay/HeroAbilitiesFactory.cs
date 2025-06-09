@@ -20,7 +20,7 @@ namespace HeroArena
             foreach (HeroAbilityDescription description in abilityDescriptions)
             {
                 HeroAbility newHeroAbility = myHero.gameObject.AddComponent<HeroAbility>();
-                newHeroAbility.abilityDescription = description;
+                newHeroAbility.Initialized(description, myHero);
                 listOfAbilities.Add(newHeroAbility);
             }
 

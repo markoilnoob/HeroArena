@@ -29,5 +29,25 @@ namespace HeroArena
             CurrentStamina = strategy.CalculateMaxStamina(primaryAtributes);
             CurrentDodge = strategy.CalculateMaxDodge(primaryAtributes);
         }
+
+        public void ApplyDamage(float damage)
+        {
+            CurrentHealth -= damage;
+        }
+
+        public void UseStamina(float stamina)
+        {
+            CurrentStamina -= stamina;
+        }
+
+        public void ApplyDodge(float dodge)
+        {
+            CurrentDodge += dodge;
+        }
+
+        public void ApplyHeal(float heal)
+        {
+            CurrentHealth += heal;
+        }
     }
 }

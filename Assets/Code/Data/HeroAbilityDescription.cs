@@ -11,6 +11,9 @@ namespace HeroArena
         public string abilityName;
         public string abilityDescription;
         public Sprite sprite;
-        [SerializeReference] public List<AbilityEffect> abilityEffects;
+        
+        [SerializeReference]
+        public List<AbilityEffect> abilityEffects;
+        
     }
 }
