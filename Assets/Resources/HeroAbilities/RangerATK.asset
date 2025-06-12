@@ -17,3 +17,12 @@ MonoBehaviour:
   abilityName: 
   abilityDescription: 
   sprite: {fileID: 21300000, guid: 5c311f643892b9a48acb8204606bcd25, type: 3}
+  abilityEffects:
+  - rid: 871470997215117381
+  references:
+    version: 2
+    RefIds:
+    - rid: 871470997215117381
+      type: {class: DamageEffect, ns: HeroArena, asm: Assembly-CSharp}
+      data:
+        magnitude: 20

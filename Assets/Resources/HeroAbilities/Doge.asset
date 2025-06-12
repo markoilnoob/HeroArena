@@ -18,9 +18,11 @@ MonoBehaviour:
   abilityDescription: 
   sprite: {fileID: 21300000, guid: f774bdee476149744b4f1dd942bf6650, type: 3}
   abilityEffects:
-  - rid: -2
+  - rid: 871470997215117379
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+    - rid: 871470997215117379
+      type: {class: DodgeEffect, ns: HeroArena, asm: Assembly-CSharp}
+      data:
+        magnitude: 10

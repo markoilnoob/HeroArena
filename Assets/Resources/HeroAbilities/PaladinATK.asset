@@ -17,3 +17,12 @@ MonoBehaviour:
   abilityName: Sacred Sword
   abilityDescription: 
   sprite: {fileID: 21300000, guid: 5666321d5b3929240b15dec74bd50ff2, type: 3}
+  abilityEffects:
+  - rid: 871470997215117380
+  references:
+    version: 2
+    RefIds:
+    - rid: 871470997215117380
+      type: {class: DamageEffect, ns: HeroArena, asm: Assembly-CSharp}
+      data:
+        magnitude: 20

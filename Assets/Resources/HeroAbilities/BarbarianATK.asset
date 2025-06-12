@@ -19,12 +19,9 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 1112be286d60c6a409c1e96e9466d5f6, type: 3}
   abilityEffects:
   - rid: 5834499290667155523
-  - rid: -2
   references:
     version: 2
     RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
     - rid: 5834499290667155523
       type: {class: DamageEffect, ns: HeroArena, asm: Assembly-CSharp}
       data:

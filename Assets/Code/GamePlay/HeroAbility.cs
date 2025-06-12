@@ -26,11 +26,13 @@ namespace HeroArena
             // TODO: Single controller for each hero
             if (ArenaGameManager.Instance.PlayerHero == hero)
             {
+                if (GameModeManager.Instance.GetTurnState() != TurnState.PlayerTurn) return;
                 abilityContext.Source = ArenaGameManager.Instance.PlayerHero;
                 abilityContext.Target = ArenaGameManager.Instance.EnemyHero;
             }
             else
             {
+                if (GameModeManager.Instance.GetTurnState() != TurnState.EnemyTurn) return;
                 abilityContext.Source = ArenaGameManager.Instance.EnemyHero;
                 abilityContext.Target = ArenaGameManager.Instance.PlayerHero;
             }

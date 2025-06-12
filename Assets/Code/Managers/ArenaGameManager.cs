@@ -37,6 +37,7 @@ namespace HeroArena
 
         private void Start()
         {
+            GameModeManager.Instance.SetTurnState(TurnState.Init);
             GameManager.Instance.UnloadScene("SCN_MainMenu");
             UIManager.Instance.OnFadeInComplete -= StartGame;
             UIManager.Instance.OnFadeInComplete += StartGame;
@@ -63,6 +64,7 @@ namespace HeroArena
 
             playerAvatar.SetAvatar(PlayerHero);
             enemyAvatar.SetAvatar(EnemyHero);
+            GameModeManager.Instance.SetTurnState(TurnState.PlayerTurn);
         }
     }
 }
