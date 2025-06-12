@@ -29,12 +29,14 @@ namespace HeroArena
                 if (GameModeManager.Instance.GetTurnState() != TurnState.PlayerTurn) return;
                 abilityContext.Source = ArenaGameManager.Instance.PlayerHero;
                 abilityContext.Target = ArenaGameManager.Instance.EnemyHero;
+                GameModeManager.Instance.SetTurnState(TurnState.EnemyTurn);
             }
             else
             {
                 if (GameModeManager.Instance.GetTurnState() != TurnState.EnemyTurn) return;
                 abilityContext.Source = ArenaGameManager.Instance.EnemyHero;
                 abilityContext.Target = ArenaGameManager.Instance.PlayerHero;
+                GameModeManager.Instance.SetTurnState(TurnState.PlayerTurn);
             }
 
             abilityContext.AbilityLevel = level;
@@ -44,7 +46,5 @@ namespace HeroArena
                 effect.Execute(abilityContext);
             }
         }
-        
-        
     }
 }

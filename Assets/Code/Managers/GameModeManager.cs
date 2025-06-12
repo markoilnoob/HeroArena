@@ -1,4 +1,5 @@
 using UnityEngine;
+
 namespace HeroArena
 {
     public enum TurnState
@@ -26,6 +27,7 @@ namespace HeroArena
         public static GameModeManager Instance { get; private set; }
 
         public TurnState turnState;
+
         private void Awake()
         {
             if (Instance == null)
