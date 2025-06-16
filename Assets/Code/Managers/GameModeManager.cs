@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace HeroArena
@@ -28,6 +29,8 @@ namespace HeroArena
 
         public TurnState turnState;
 
+        public static Action<TurnState> OnNewTurnState;
+
         private void Awake()
         {
             if (Instance == null)
@@ -43,7 +46,8 @@ namespace HeroArena
         public void SetTurnState(TurnState newTurnState)
         {
             turnState = newTurnState;
-            Debug.Log("turnstate");
+            OnNewTurnState?.Invoke(turnState);
+            Debug.Log($"turnstate {turnState}");
         }
 
         public TurnState GetTurnState()

@@ -12,6 +12,7 @@ namespace HeroArena
         public int level = 1;
         private Hero hero;
         HeroAbilityContext abilityContext;
+        public static Action OnEnemyTurn;
 
         public void Initialized(HeroAbilityDescription inAbilityDescription, Hero inHero)
         {
@@ -36,6 +37,7 @@ namespace HeroArena
                 if (GameModeManager.Instance.GetTurnState() != TurnState.EnemyTurn) return;
                 abilityContext.Source = ArenaGameManager.Instance.EnemyHero;
                 abilityContext.Target = ArenaGameManager.Instance.PlayerHero;
+                OnEnemyTurn?.Invoke();
                 GameModeManager.Instance.SetTurnState(TurnState.PlayerTurn);
             }
 

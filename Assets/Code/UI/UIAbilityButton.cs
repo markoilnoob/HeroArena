@@ -20,7 +20,5 @@ namespace HeroArena.UI
             button.onClick -= ability.ActivateAbility;
             button.onClick += ability.ActivateAbility;
         }
-        
-        
     }
 }

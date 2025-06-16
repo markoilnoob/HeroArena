@@ -32,7 +32,13 @@ namespace HeroArena
 
         public void ApplyDamage(float damage)
         {
-            CurrentHealth -= damage;
+            CurrentHealth -= damage/CurrentDodge;
+
+            if (CurrentHealth < 0)
+            {
+                CurrentHealth = 0;
+                return;
+            }
         }
 
         public void UseStamina(float stamina)
