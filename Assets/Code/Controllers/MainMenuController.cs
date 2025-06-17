@@ -6,6 +6,9 @@ namespace HeroArena.UI
     public class MainMenuController : UIController
     {
         public Action<HeroClass> OnHeroChanged;
+        public Action OnUserNewGameSelected;
+        public Action OnNewGameConfirmed;
+        public Action OnHeroInfoRequested;
 
         public override void BindCallbacks()
         {

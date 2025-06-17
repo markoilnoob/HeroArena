@@ -1,13 +1,22 @@
 using System;
 using UnityEngine;
+using HeroArena.UI;
 
-namespace HeroArena.UI
+namespace HeroArena
 {
-    public class MainMenuHUD : MonoBehaviour
+    public class MainMenuHUD : HeroArenaHUD
     {
         private MainMenuController menuController;
         [SerializeField] private UIContinueHero continueHero;
         [SerializeField] private UIButton continueButton;
+
+        [SerializeField]
+        UIPanel mainMenuPanel;
+        [SerializeField]
+        UIPanel heroSelectionPanel;
+        [SerializeField]
+        UIPanel heroInfoPanel;
+
 
         private void Start()
         {
@@ -15,8 +24,14 @@ namespace HeroArena.UI
             //AudioManager.Instance.PlayMusic();
 
             menuController = new MainMenuController();
+
             menuController.OnHeroChanged -= OnHeroChanged;
             menuController.OnHeroChanged += OnHeroChanged;
+
+            menuController.OnUserNewGameSelected -= OnNewGameSelected;
+            menuController.OnUserNewGameSelected += OnNewGameSelected;
+
+
             continueHero.SetController(menuController);
             menuController.BroadcastInitialValues();
         }
@@ -36,6 +51,12 @@ namespace HeroArena.UI
             {
                 continueButton.SetButtonActive(true);
             }
+        }
+
+        private void OnNewGameSelected()
+        {
+            heroSelectionPanel.gameObject.SetActive(true);
+            SetControllers(heroSelectionPanel.gameObject);
         }
 
     }

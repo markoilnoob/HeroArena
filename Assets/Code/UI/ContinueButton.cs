@@ -1,6 +1,8 @@
 using HeroArena;
 using Unity.VisualScripting;
 using UnityEngine;
+using HeroArena;
+
 [RequireComponent(typeof(UIButton))]
 public class ContinueButton : MonoBehaviour
 {
@@ -9,5 +11,13 @@ public class ContinueButton : MonoBehaviour
     private void Awake()
     {
         button = GetComponent<UIButton>();
+
+        button.onClick -= loadScene;
+        button.onClick += loadScene;
+    }
+
+    private void loadScene()
+    {
+        GameManager.Instance.LoadScene("SCN_SplashScreen");
     }
 }

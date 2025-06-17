@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using HeroArena.UI;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HeroArena
 {
@@ -139,6 +142,32 @@ namespace HeroArena
             fadeOutCoroutine = null;
             OnFadeOutComplete?.Invoke();
         }*/
+        #endregion
+
+        #region UI Stack Management
+
+        private List<UIPanel> panelStack = new List<UIPanel>();
+
+        public void PushPanel(UIPanel panel)
+        {
+            if(panel != null)
+            {
+                panelStack.Add(panel);
+            }
+        }
+
+        public void RemovePanel(UIPanel panel)
+        {
+            if (panelStack.Count > 0 && panelStack.Last() == panel)
+            {
+                panelStack.Remove(panel);
+            }
+            else
+            {
+                Debug.LogWarning("Trying to remove a panel not on top of the stack!");
+            }
+        }
+
         #endregion
     }
 }
