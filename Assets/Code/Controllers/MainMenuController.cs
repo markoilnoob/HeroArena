@@ -25,5 +25,10 @@ namespace HeroArena.UI
         {
             OnHeroChanged?.Invoke(heroClass);
         }
+
+        public void NewGameSelected()
+        {
+            OnUserNewGameSelected?.Invoke();
+        }
     }
 }

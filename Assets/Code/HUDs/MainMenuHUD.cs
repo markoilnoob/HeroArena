@@ -17,13 +17,18 @@ namespace HeroArena
         [SerializeField]
         UIPanel heroInfoPanel;
 
+        [SerializeField]
+        GameObject canvasGO;
+
 
         private void Start()
         {
             UIManager.Instance.FadeIn();
             //AudioManager.Instance.PlayMusic();
 
-            menuController = new MainMenuController();
+            sceneController = new MainMenuController();
+            menuController = (MainMenuController)sceneController;
+            
 
             menuController.OnHeroChanged -= OnHeroChanged;
             menuController.OnHeroChanged += OnHeroChanged;
@@ -33,6 +38,9 @@ namespace HeroArena
 
 
             continueHero.SetController(menuController);
+
+            SetControllers(canvasGO);
+
             menuController.BroadcastInitialValues();
         }
 

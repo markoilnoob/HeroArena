@@ -2,16 +2,25 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using HeroArena.UI;
+
 
 namespace HeroArena
 {
     [RequireComponent(typeof(Button))]
-    public class UIButton : MonoBehaviour
+    public class UIButton : MonoBehaviour, IUIElement
     {
         Button baseButton;
         Color disabled = Color.blue;
 
         public Action onClick;
+
+        public UIController controller;
+
+        public void SetController(UIController uiController)
+        {
+            controller = uiController;
+        }
 
         private void Awake()
         {
