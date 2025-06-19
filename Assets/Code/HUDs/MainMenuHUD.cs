@@ -36,6 +36,8 @@ namespace HeroArena
             menuController.OnUserNewGameSelected -= OnNewGameSelected;
             menuController.OnUserNewGameSelected += OnNewGameSelected;
 
+            menuController.OnNewGameConfirmed -= OnNewGameConfirmed;
+            menuController.OnNewGameConfirmed += OnNewGameConfirmed;
 
             continueHero.SetController(menuController);
 
@@ -67,5 +69,9 @@ namespace HeroArena
             SetControllers(heroSelectionPanel.gameObject);
         }
 
+        private void OnNewGameConfirmed()
+        {
+            GameManager.Instance.LoadGame();
+        }
     }
 }

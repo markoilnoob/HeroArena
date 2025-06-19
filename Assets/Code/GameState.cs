@@ -66,6 +66,7 @@ namespace HeroArena
         public void OnNewGame()
         {
             ConfirmHeroSelection();
+            //
         }
     }
 }

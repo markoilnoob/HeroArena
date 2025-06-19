@@ -29,6 +29,8 @@ namespace HeroArena
             SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
+        #region LoadScene
+
         public void LoadScene(string sceneName)
         {
             if (!IsSceneLoaded(sceneName))
@@ -68,6 +70,14 @@ namespace HeroArena
                     Destroy(eventSystems[i].gameObject);
                 }
             }
+        }
+
+        #endregion
+
+        public void LoadGame()
+        {
+            GameState.Instance.OnNewGame();
+            LoadScene("SCN_Game");
         }
 
         public void QuitApplication()
