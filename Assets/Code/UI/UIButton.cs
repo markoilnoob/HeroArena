@@ -10,7 +10,7 @@ namespace HeroArena
     [RequireComponent(typeof(Button))]
     public class UIButton : MonoBehaviour, IUIElement
     {
-        Button baseButton;
+        protected Button baseButton;
         Color disabled = Color.blue;
 
         public Action onClick;
@@ -22,7 +22,7 @@ namespace HeroArena
             controller = uiController;
         }
 
-        private void Awake()
+        protected virtual void Awake()
         {
             baseButton = GetComponent<Button>();
             baseButton.onClick.AddListener(OnClick);
@@ -37,7 +37,7 @@ namespace HeroArena
             //baseButton.interactable = false;
         }
 
-        public void OnClick()
+        public virtual void OnClick()
         {
             onClick?.Invoke();
         }
@@ -57,6 +57,12 @@ namespace HeroArena
         public void SetText(string text)
         {
             baseButton.GetComponentInChildren<TextMeshProUGUI>().text = text;
+        }
+
+        public void SetImageColor(Color color)
+        {
+            Image img = GetComponent<Image>();
+            img.color = color;
         }
     }
 }

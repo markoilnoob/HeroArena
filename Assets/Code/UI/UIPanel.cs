@@ -31,8 +31,5 @@ namespace HeroArena.UI
         {
             UIManager.Instance.RemovePanel(this);
         }
-
-
     }
-
 }

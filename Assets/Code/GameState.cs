@@ -10,10 +10,7 @@ namespace HeroArena
         public Action<HeroClass> OnHeroSelected;
         public HeroDescription[] HeroSO; //riferimento allo scriptable object
 
-        private HeroClass heroSelected;
-
-       
-
+        private HeroClass heroSelected = HeroClass.NONE;
 
         public HeroClass HeroSelected
         {
@@ -28,6 +25,26 @@ namespace HeroArena
             }
         }
 
+        private HeroClass heroTempSelected = HeroClass.NONE;
+
+        public HeroClass HeroTempSelected
+        {
+            get => heroTempSelected;
+            set => heroTempSelected = value;
+        }
+
+        //Singleton
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         public HeroDescription GetHeroDescription(HeroClass heroClass)
         {
@@ -41,21 +58,14 @@ namespace HeroArena
             return null;
         }
 
-
-
-        //Singleton
-        private void Awake()
+        public void ConfirmHeroSelection()
         {
-            if (Instance == null)
-            {
-                Instance = this;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
+            HeroSelected = HeroTempSelected;
+        }
 
-            HeroSelected = HeroClass.NONE;
+        public void OnNewGame()
+        {
+            ConfirmHeroSelection();
         }
     }
 }

@@ -30,5 +30,11 @@ namespace HeroArena.UI
         {
             OnUserNewGameSelected?.Invoke();
         }
+
+        public void SetPlayerTempSelection(HeroClass heroClass)
+        {
+            GameState.Instance.HeroTempSelected = heroClass;
+            Debug.Log($"Setting temp selection {heroClass}");
+        }
     }
 }

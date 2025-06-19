@@ -1,7 +1,6 @@
 using HeroArena;
 using Unity.VisualScripting;
 using UnityEngine;
-using HeroArena;
 
 [RequireComponent(typeof(UIButton))]
 public class ContinueButton : MonoBehaviour

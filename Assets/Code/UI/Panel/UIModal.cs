@@ -6,8 +6,5 @@ namespace HeroArena.UI
     {
         [SerializeField]
         float animationDuration = 0.3f;
-
-
     }
 }
-
