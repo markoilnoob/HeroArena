@@ -9,6 +9,10 @@ namespace HeroArena
         [SerializeField] private UIButton returnButton;
         [SerializeField] private GameObject canvasGO;
 
+        [SerializeField] private UIPanel gameOverPanel;
+        [SerializeField] private UIPanel winPanel;
+
+
         private void Start()
         {
             UIManager.Instance.FadeIn();
@@ -19,6 +23,16 @@ namespace HeroArena
 
             endController.OnReturnToMainMenu -= OnReturnToMainMenu;
             endController.OnReturnToMainMenu += OnReturnToMainMenu;
+
+            if(ArenaGameManager.Instance.isPlayerWinner)
+            {
+                winPanel.gameObject.SetActive(true);
+            }
+            else
+            {
+                gameOverPanel.gameObject.SetActive(true);
+            }
+
             //button -> Init
             returnButton.SetController(endController);
             //endController.BroadcastInitialValues();

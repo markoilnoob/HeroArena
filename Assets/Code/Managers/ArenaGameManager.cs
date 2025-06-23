@@ -18,6 +18,8 @@ namespace HeroArena
 
         public Action<Hero, bool /* IsPlayer */> OnHeroCreated;
 
+        public bool isPlayerWinner = false;
+
         public static ArenaGameManager Instance { get; private set; }
 
         private void Awake()
@@ -65,6 +67,13 @@ namespace HeroArena
             playerAvatar.SetAvatar(PlayerHero);
             enemyAvatar.SetAvatar(EnemyHero);
             GameModeManager.Instance.SetTurnState(TurnState.PlayerTurn);
+        }
+
+        public void EndGame(bool isPlayerHeroDead)
+        {
+            isPlayerWinner = !isPlayerHeroDead;
+            GameModeManager.Instance.SetTurnState(TurnState.EndGame);           
+            GameManager.Instance.LoadScene("SCN_EndGame");           
         }
     }
 }

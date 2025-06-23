@@ -150,6 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   returnButton: {fileID: 936699801}
   canvasGO: {fileID: 1307049589}
+  gameOverPanel: {fileID: 797710903}
+  winPanel: {fileID: 1445248629}
 --- !u!4 &215692570
 Transform:
   m_ObjectHideFlags: 0
@@ -335,7 +337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &797710902
 RectTransform:
   m_ObjectHideFlags: 0
@@ -701,7 +703,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1445248628
 RectTransform:
   m_ObjectHideFlags: 0

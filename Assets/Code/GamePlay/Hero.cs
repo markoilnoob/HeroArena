@@ -72,9 +72,10 @@ namespace HeroArena
             IsPlayer = ArenaGameManager.Instance.PlayerHero == this;
             
             OnHeroStatsUpdated?.Invoke(HeroStats, IsPlayer);
+
             if(HeroStats.CurrentHealth <= 0)
             {
-                GameModeManager.Instance.SetTurnState(TurnState.EndGame);
+                ArenaGameManager.Instance.EndGame(IsPlayer);
                 return;
             }
         }
