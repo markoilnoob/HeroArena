@@ -3,6 +3,8 @@ using UnityEngine;
 
 namespace HeroArena
 {
+   
+
     [RequireComponent(typeof(HeroFactory))]
     public class ArenaGameManager : MonoBehaviour
     {
@@ -48,6 +50,8 @@ namespace HeroArena
 
         private void StartGame()
         {
+            if (GameManager.Instance.GetSceneState() != SceneState.ArenaBattle) return;
+
             HeroClass playerHeroClass = GameState.Instance.HeroSelected;
             if (playerHeroClass == HeroClass.NONE)
             {
@@ -67,12 +71,15 @@ namespace HeroArena
             playerAvatar.SetAvatar(PlayerHero);
             enemyAvatar.SetAvatar(EnemyHero);
             GameModeManager.Instance.SetTurnState(TurnState.PlayerTurn);
+
+            UIManager.Instance.OnFadeInComplete -= StartGame;
         }
 
         public void EndGame(bool isPlayerHeroDead)
         {
             isPlayerWinner = !isPlayerHeroDead;
-            GameModeManager.Instance.SetTurnState(TurnState.EndGame);           
+            GameModeManager.Instance.SetTurnState(TurnState.EndGame);
+            GameManager.Instance.SetSceneState(SceneState.EndArenaBattle);
             GameManager.Instance.LoadScene("SCN_EndGame");           
         }
     }

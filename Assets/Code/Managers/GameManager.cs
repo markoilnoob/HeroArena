@@ -5,10 +5,32 @@ using UnityEngine.SceneManagement;
 
 namespace HeroArena
 {
+
+    // Stati per capire in che scena siamo, che combacia con lo stato del gioco
+    public enum SceneState
+    {
+        InitScene,
+        MainMenu,
+        ArenaBattle,
+        EndArenaBattle
+    }
+
     public class GameManager : MonoBehaviour
     {
         public static GameManager Instance { get; private set; }
         private string lastLoadedScene = string.Empty;
+
+        private SceneState gameSceneState = SceneState.InitScene;
+
+        public SceneState GetSceneState()
+        {
+            return gameSceneState;
+        }
+
+        public void SetSceneState(SceneState newSceneState)
+        {
+            gameSceneState = newSceneState;
+        }
 
         //Singleton
         private void Awake()
@@ -77,6 +99,7 @@ namespace HeroArena
         public void LoadGame()
         {
             GameState.Instance.OnNewGame();
+            GameManager.Instance.SetSceneState(SceneState.ArenaBattle);
             LoadScene("SCN_Game");
         }
 

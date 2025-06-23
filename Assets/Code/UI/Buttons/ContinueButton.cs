@@ -17,6 +17,7 @@ public class ContinueButton : MonoBehaviour
 
     private void loadScene()
     {
+        //GameManager.Instance.SetSceneState(SceneState.MainMenu);
         GameManager.Instance.LoadScene("SCN_SplashScreen");
     }
 }

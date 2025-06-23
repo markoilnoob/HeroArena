@@ -22,6 +22,12 @@ namespace HeroArena
             ArenaGameManager.Instance.OnHeroCreated += OnEnemyHeroCreated;
         }
 
+        void OnDestroy()
+        {
+            GameModeManager.OnNewTurnState -= OnEnemyTurnState;
+            ArenaGameManager.Instance.OnHeroCreated -= OnEnemyHeroCreated;
+        }
+
         void OnEnemyTurnState(TurnState turnState)
         {
             if (turnState == TurnState.EnemyTurn)
@@ -67,4 +73,6 @@ namespace HeroArena
             }*/
         }
     }
+
+    
 }

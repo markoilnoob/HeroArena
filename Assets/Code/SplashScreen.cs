@@ -24,6 +24,7 @@ namespace HeroArena
 
         private void ChangeScene()
         {
+            GameManager.Instance.SetSceneState(SceneState.MainMenu);
             GameManager.Instance.LoadScene("SCN_MainMenu");
             GameManager.Instance.UnloadScene("SCN_SplashScreen");
         }

@@ -33,6 +33,8 @@ namespace HeroArena
                 gameOverPanel.gameObject.SetActive(true);
             }
 
+            GameManager.Instance.UnloadScene("SCN_Game");
+
             //button -> Init
             returnButton.SetController(endController);
             //endController.BroadcastInitialValues();
@@ -41,6 +43,8 @@ namespace HeroArena
         private void OnReturnToMainMenu()
         {
             Debug.Log("Returning to main menu");
+
+            GameManager.Instance.SetSceneState(SceneState.MainMenu);
             GameManager.Instance.LoadScene("SCN_MainMenu");
             GameManager.Instance.UnloadScene("SCN_EndGame");
         }
