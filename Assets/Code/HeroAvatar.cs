@@ -37,7 +37,7 @@ namespace HeroArena
             transform.localScale = Vector3.zero;
 
             // Avvia l'animazione di comparsa
-            StartCoroutine(AnimateAppearance());
+           StartCoroutine(AnimateAppearance());
         }
 
         private IEnumerator AnimateAppearance()
