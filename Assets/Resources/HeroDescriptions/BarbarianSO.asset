@@ -21,3 +21,4 @@ MonoBehaviour:
     strength: 15
     agility: 3
     constitution: 12
+    speed: 8
