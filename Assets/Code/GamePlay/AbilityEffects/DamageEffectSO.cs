@@ -23,7 +23,6 @@ namespace HeroArena
             {
                 magnitude = damageEffect.magnitude;
             }
-
         }
     }
 }

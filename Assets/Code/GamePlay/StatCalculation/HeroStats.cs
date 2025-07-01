@@ -11,6 +11,7 @@ namespace HeroArena
         public float CurrentHealth { get; private set; }
         public float CurrentStamina { get; private set; }
         public float CurrentDodge { get; private set; }
+        public float CurrentRange { get; private set; }
 
         public void Init(HeroPrimaryAtributes heroPrimaryAtributes)
         {
@@ -28,11 +29,12 @@ namespace HeroArena
             CurrentHealth = strategy.CalculateMaxHealth(primaryAtributes);
             CurrentStamina = strategy.CalculateMaxStamina(primaryAtributes);
             CurrentDodge = strategy.CalculateMaxDodge(primaryAtributes);
+            CurrentRange = strategy.CalculateMaxRange(primaryAtributes);
         }
 
         public void ApplyDamage(float damage)
         {
-            CurrentHealth -= damage * 5 ;
+            CurrentHealth -= damage;
             //CurrentHealth -= damage/CurrentDodge; //TODO: improve calculation
 
             if (CurrentHealth < 0)
@@ -45,6 +47,11 @@ namespace HeroArena
         public void UseStamina(float stamina)
         {
             CurrentStamina -= stamina;
+        }
+
+        public void RecoverStamina(float stamina)
+        {
+            CurrentStamina += stamina;
         }
 
         public void ApplyDodge(float dodge)

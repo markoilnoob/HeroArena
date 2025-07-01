@@ -105,5 +105,11 @@ namespace HeroArena
             HeroStats.ApplyDodge(dodge);
             HeroStatsUpdated();
         }
+
+        public void RecoverHeroStamina(float stamina)
+        {
+            HeroStats.RecoverStamina(stamina);
+            HeroStatsUpdated();
+        }
     }         
 }

@@ -7,6 +7,6 @@ namespace HeroArena
         int CalculateMaxHealth(HeroPrimaryAtributes atributes);
         int CalculateMaxStamina(HeroPrimaryAtributes atributes);
         float CalculateMaxDodge(HeroPrimaryAtributes atributes);
+        float CalculateMaxRange(HeroPrimaryAtributes atributes);
     }
-
 }

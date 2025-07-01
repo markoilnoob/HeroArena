@@ -1,20 +1,17 @@
-using System;
-using HeroArena;
 using UnityEngine;
 
 namespace HeroArena
 {
-    [Serializable]
-    public class DodgeEffect : AbilityEffect
+    public class HealingEffect : AbilityEffect
     {
-        public float magnitude = 10;
+        public float magnitude = 8f;
 
         public override void Execute(HeroAbilityContext context)
         {
             Debug.Log("Launch Ability");
             Debug.Log(context.Source.ToString());
-            
-            context.Source.ApplyHeroDodge(magnitude);
+
+            context.Source.ApplyHeroHeal(magnitude);
         }
 
         public override void CopyFrom(AbilityEffect other)

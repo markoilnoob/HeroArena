@@ -11,6 +11,7 @@ namespace HeroArena.UI
         [SerializeField] private TextMeshProUGUI health;
         [SerializeField] private TextMeshProUGUI stamina;
         [SerializeField] private TextMeshProUGUI dodge;
+        [SerializeField] private TextMeshProUGUI range;
 
         public void SetController(UIController uiController)
         {
@@ -32,6 +33,7 @@ namespace HeroArena.UI
                 health.text = $"{heroStats.CurrentHealth} hp";
                 stamina.text = heroStats.CurrentStamina.ToString();
                 dodge.text = heroStats.CurrentDodge.ToString();
+                range.text = $"{heroStats.CurrentRange} m";
             }
         }
     }

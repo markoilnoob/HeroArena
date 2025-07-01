@@ -8,11 +8,7 @@ namespace HeroArena
         public int healthPerStrength = 10;
         public int staminaPerConstitution = 5;
         public float dodgePerAgility = 0.1f;
-
-        public float CalculateMaxDodge(HeroPrimaryAtributes atributes)
-        {
-            return dodgePerAgility * atributes.agility;
-        }
+        public float rangePerSpeed = 0.25f;
 
         public int CalculateMaxHealth(HeroPrimaryAtributes atributes)
         {
@@ -23,6 +19,15 @@ namespace HeroArena
         {
             return staminaPerConstitution * atributes.constitution;
         }
-    }
 
+        public float CalculateMaxDodge(HeroPrimaryAtributes atributes)
+        {
+            return dodgePerAgility * atributes.agility;
+        }
+
+        public float CalculateMaxRange(HeroPrimaryAtributes atributes)
+        {
+            return rangePerSpeed * atributes.speed;
+        }
+    }
 }

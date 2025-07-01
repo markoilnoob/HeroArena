@@ -8,6 +8,7 @@ namespace HeroArena
         public int strength;
         public int agility;
         public int constitution;
+        public int speed;
     }
 
     public class HeroSecondaryAtributes
@@ -15,5 +16,6 @@ namespace HeroArena
         public int MaxHealth;
         public int MaxStamina;
         public float MaxDodge;
+        public float MaxRange;
     }
 }
