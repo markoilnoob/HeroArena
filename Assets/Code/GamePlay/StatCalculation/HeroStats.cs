@@ -32,7 +32,7 @@ namespace HeroArena
 
         public void ApplyDamage(float damage)
         {
-            CurrentHealth -= damage * 5 ;
+            CurrentHealth -= damage;
             //CurrentHealth -= damage/CurrentDodge; //TODO: improve calculation
 
             if (CurrentHealth < 0)
