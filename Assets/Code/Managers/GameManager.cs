@@ -11,7 +11,9 @@ namespace HeroArena
     {
         InitScene,
         MainMenu,
-        ArenaBattle,
+        ArenaBattle1,
+        ArenaBattle2,
+        ArenaBattle3,
         EndArenaBattle
     }
 
@@ -21,6 +23,7 @@ namespace HeroArena
         private string lastLoadedScene = string.Empty;
 
         private SceneState gameSceneState = SceneState.InitScene;
+        public GameObject canvas;
 
         public SceneState GetSceneState()
         {
@@ -98,9 +101,17 @@ namespace HeroArena
 
         public void LoadGame()
         {
+            //canvas = TryGetComponent(Canvas c, out Canvas i);
             GameState.Instance.OnNewGame();
-            GameManager.Instance.SetSceneState(SceneState.ArenaBattle);
+            GameManager.Instance.SetSceneState(SceneState.ArenaBattle1);
             LoadScene("SCN_Game");
+        }
+
+        public void LoadNextBattle()
+        {
+            GameState.Instance.OnNewGame();
+            GameManager.Instance.SetSceneState(SceneState.ArenaBattle2);
+            LoadScene("SCN_Game_1");
         }
 
         public void QuitApplication()

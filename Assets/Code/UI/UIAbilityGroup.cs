@@ -20,6 +20,16 @@ namespace HeroArena.UI
 
         private void AbilityUpdate(List<HeroAbility> list, bool IsPlayer)
         {
+            //Debug.LogWarning("ability update");
+            if (_IsPlayer == false) 
+            {
+                foreach (Transform trs in transform) 
+                {
+                    Debug.LogWarning(trs.gameObject);
+                    Destroy(trs.gameObject);
+                }
+            }
+            
 
             if (_IsPlayer == IsPlayer)
             {
@@ -31,6 +41,7 @@ namespace HeroArena.UI
                     btnAbility.Init(ability);
                 }
             }
+           
         }
     }
 }

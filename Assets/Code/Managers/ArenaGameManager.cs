@@ -22,6 +22,8 @@ namespace HeroArena
 
         public bool isPlayerWinner = false;
 
+        private int enemySpawnCounter = 1;
+
         public static ArenaGameManager Instance { get; private set; }
 
         private void Awake()
@@ -50,7 +52,7 @@ namespace HeroArena
 
         private void StartGame()
         {
-            if (GameManager.Instance.GetSceneState() != SceneState.ArenaBattle) return;
+            if (GameManager.Instance.GetSceneState() != SceneState.ArenaBattle1) return;
 
             HeroClass playerHeroClass = GameState.Instance.HeroSelected;
             if (playerHeroClass == HeroClass.NONE)
@@ -78,9 +80,34 @@ namespace HeroArena
         public void EndGame(bool isPlayerHeroDead)
         {
             isPlayerWinner = !isPlayerHeroDead;
-            GameModeManager.Instance.SetTurnState(TurnState.EndGame);
-            GameManager.Instance.SetSceneState(SceneState.EndArenaBattle);
-            GameManager.Instance.LoadScene("SCN_EndGame");           
+            if (isPlayerHeroDead)
+            {
+                GameModeManager.Instance.SetTurnState(TurnState.EndGame);
+                GameManager.Instance.SetSceneState(SceneState.EndArenaBattle);
+                GameManager.Instance.LoadScene("SCN_EndGame");
+            }
+            else if (enemySpawnCounter < 3)
+            {
+                //GameManager.Instance.LoadNextBattle();
+                SpawnNewEnemy();
+                enemySpawnCounter++;
+            }
+            else 
+            {
+                GameModeManager.Instance.SetTurnState(TurnState.EndGame);
+                GameManager.Instance.SetSceneState(SceneState.EndArenaBattle);
+                GameManager.Instance.LoadScene("SCN_EndGame");
+            }
+        }
+
+
+        public void SpawnNewEnemy()
+        {
+            HeroClass enemyHeroClass = HeroArenaUtils.GetRandomEnumValue<HeroClass>(1, 0);
+            EnemyHero = heroFactory.CreateHero(enemyHeroClass, enemyGO);
+            OnHeroCreated?.Invoke(EnemyHero, false);
+            enemyAvatar.SetAvatar(EnemyHero);
+            GameModeManager.Instance.SetTurnState(TurnState.PlayerTurn);
         }
     }
 }
