@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SCN_Game.unity
     guid: 878f704e9d2cdd140a8b831dbc2c3d80
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SCN_Game_1.unity
     guid: 227b4fb948e99034dbb6cf53cc522c3f
   - enabled: 1

@@ -41,5 +41,8 @@ namespace HeroArena.UI
             GameState.Instance.HeroTempSelected = heroClass;
             Debug.Log($"Setting temp selection {heroClass}");
         }
+
+
+
     }
 }

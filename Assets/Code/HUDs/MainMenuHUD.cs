@@ -73,5 +73,6 @@ namespace HeroArena
         {
             GameManager.Instance.LoadGame();
         }
+
     }
 }
