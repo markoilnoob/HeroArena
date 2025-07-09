@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableClasses: 01000000020000000300000004000000
   abilityID: 0
-  abilityName: 
-  abilityDescription: 
+  abilityName: Dodge
+  abilityDescription: Press circle to dodge - souls games
   sprite: {fileID: 21300000, guid: f774bdee476149744b4f1dd942bf6650, type: 3}
   abilityEffects:
   - rid: 871470997215117379

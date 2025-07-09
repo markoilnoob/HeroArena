@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   availableClasses: 04000000
   abilityID: 3
-  abilityName: 
-  abilityDescription: 
+  abilityName: RangerATK
+  abilityDescription: Base ATK
   sprite: {fileID: 21300000, guid: 5c311f643892b9a48acb8204606bcd25, type: 3}
   abilityEffects:
   - rid: 871470997215117381

@@ -12,6 +12,9 @@ namespace HeroArena
 
         private HeroClass heroSelected = HeroClass.NONE;
 
+        private HeroAbilityDescription selectedAbility;
+        public HeroAbilityDescription SelectedAbility => selectedAbility;
+
         public HeroClass HeroSelected
         {
             get
@@ -67,6 +70,11 @@ namespace HeroArena
         {
             ConfirmHeroSelection();
             //
+        }
+
+        public void ConfirmAbilitySelection(HeroAbilityDescription ability)
+        {
+            selectedAbility = ability;
         }
     }
 }
