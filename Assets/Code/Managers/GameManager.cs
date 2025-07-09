@@ -12,7 +12,8 @@ namespace HeroArena
         InitScene,
         MainMenu,
         ArenaBattle,
-        EndArenaBattle
+        EndArenaBattle,
+        Inventory
     }
 
     public class GameManager : MonoBehaviour

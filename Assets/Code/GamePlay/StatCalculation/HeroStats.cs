@@ -17,17 +17,27 @@ namespace HeroArena
             primaryAtributes = heroPrimaryAtributes;
         }
 
-        public void SetCalculationStrategy(IStatCalculationStrategy calculationStrategy)
+        public void SetCalculationStrategy(IStatCalculationStrategy calculationStrategy, bool isPlayer = false)
         {
             strategy = calculationStrategy;
-            ReCalculateStats();
+            ReCalculateStats(isPlayer);
         }
 
-        public void ReCalculateStats()
+        public void ReCalculateStats(bool isPlayer = false)
         {
-            CurrentHealth = strategy.CalculateMaxHealth(primaryAtributes);
-            CurrentStamina = strategy.CalculateMaxStamina(primaryAtributes);
-            CurrentDodge = strategy.CalculateMaxDodge(primaryAtributes);
+            float costitution = 1;
+            float strength = 1;
+            float speed = 1;
+            if (isPlayer)
+            {
+                costitution = ItemManager.Instance.itemCostitution == 0 ? 1 : ItemManager.Instance.itemCostitution;
+                strength = ItemManager.Instance.itemStrength == 0 ? 1 : ItemManager.Instance.itemStrength;
+                speed = ItemManager.Instance.itemSpeed == 0 ? 1 : ItemManager.Instance.itemSpeed;
+            }
+           
+            CurrentHealth = strategy.CalculateMaxHealth(primaryAtributes) * costitution;
+            CurrentStamina = strategy.CalculateMaxStamina(primaryAtributes) * strength;
+            CurrentDodge = strategy.CalculateMaxDodge(primaryAtributes) * speed;
         }
 
         public void ApplyDamage(float damage)
@@ -56,5 +66,7 @@ namespace HeroArena
         {
             CurrentHealth += heal;
         }
+
+
     }
 }

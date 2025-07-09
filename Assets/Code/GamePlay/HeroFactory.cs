@@ -26,7 +26,7 @@ namespace HeroArena
             strategy = strategyAsset as IStatCalculationStrategy;   //CAST Type 2
         }
 
-        public Hero CreateHero(HeroClass heroClass, GameObject heroGO)
+        public Hero CreateHero(HeroClass heroClass, GameObject heroGO, bool isPlayer = false)
         {
             /*
             Hero hero; 
@@ -69,7 +69,7 @@ namespace HeroArena
                 Hero hero = (Hero)heroGO.AddComponent(heroType);
                 hero.Init();
 
-                hero.HeroStats.SetCalculationStrategy(strategy);
+                hero.HeroStats.SetCalculationStrategy(strategy, isPlayer);
 
                 return hero;
             }

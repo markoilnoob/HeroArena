@@ -62,7 +62,7 @@ namespace HeroArena
 
             Debug.Log("Game Started");
 
-            PlayerHero = heroFactory.CreateHero(playerHeroClass, playerGO);
+            PlayerHero = heroFactory.CreateHero(playerHeroClass, playerGO, true);
             OnHeroCreated?.Invoke(PlayerHero, true);
 
             EnemyHero = heroFactory.CreateHero(enemyHeroClass, enemyGO);

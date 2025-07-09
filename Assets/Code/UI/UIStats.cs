@@ -11,6 +11,9 @@ namespace HeroArena.UI
         [SerializeField] private TextMeshProUGUI health;
         [SerializeField] private TextMeshProUGUI stamina;
         [SerializeField] private TextMeshProUGUI dodge;
+        public float itemCostitution;
+        public float itemStrength;
+        public float itemSpeed;
 
         public void SetController(UIController uiController)
         {
@@ -24,14 +27,14 @@ namespace HeroArena.UI
             gameController.OnHeroStatsCalculated -= OnHeroStatsUpdate;
             gameController.OnHeroStatsCalculated += OnHeroStatsUpdate;
         }
-
+        
         private void OnHeroStatsUpdate(HeroStats heroStats, bool isPlayer)
         {
             if (_IsPlayer == isPlayer)
             {
                 health.text = $"{heroStats.CurrentHealth} hp";
-                stamina.text = heroStats.CurrentStamina.ToString();
-                dodge.text = heroStats.CurrentDodge.ToString();
+                stamina.text = $"{heroStats.CurrentStamina} hp";
+                dodge.text = $"{heroStats.CurrentDodge} hp";
             }
         }
     }
