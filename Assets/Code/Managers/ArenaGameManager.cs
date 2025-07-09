@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace HeroArena
@@ -9,14 +10,13 @@ namespace HeroArena
     public class ArenaGameManager : MonoBehaviour
     {
         private HeroFactory heroFactory;
-        public Hero PlayerHero { get; private set; }
-        public Hero EnemyHero { get; private set; }
         [Header("Hero Avatar Options")]
         [SerializeField] private HeroAvatar playerAvatar;
         [SerializeField] private HeroAvatar enemyAvatar;
-
         [SerializeField] private GameObject playerGO;
         [SerializeField] private GameObject enemyGO;
+        public List<Hero> PlayerHeroes { get; private set; } = new();
+        public List<Hero> EnemyHeroes { get; private set; } = new();
 
         public Action<Hero, bool /* IsPlayer */> OnHeroCreated;
 
@@ -52,28 +52,39 @@ namespace HeroArena
         {
             if (GameManager.Instance.GetSceneState() != SceneState.ArenaBattle) return;
 
-            HeroClass playerHeroClass = GameState.Instance.HeroSelected;
-            if (playerHeroClass == HeroClass.NONE)
-            {
-                playerHeroClass = HeroArenaUtils.GetRandomEnumValue<HeroClass>(1,0);
-            }
-            
-            HeroClass enemyHeroClass = HeroArenaUtils.GetRandomEnumValue<HeroClass>(1, 0);
-
             Debug.Log("Game Started");
 
-            PlayerHero = heroFactory.CreateHero(playerHeroClass, playerGO);
-            OnHeroCreated?.Invoke(PlayerHero, true);
+            // Eroi giocatore
+            for (int i = 0; i < 2; i++)
+            {
+                HeroClass heroClass = (i == 0 && GameState.Instance.HeroSelected != HeroClass.NONE)
+                    ? GameState.Instance.HeroSelected
+                    : HeroArenaUtils.GetRandomEnumValue<HeroClass>(1, 0);
 
-            EnemyHero = heroFactory.CreateHero(enemyHeroClass, enemyGO);
-            OnHeroCreated?.Invoke(EnemyHero, false);
+                GameObject playerObj = Instantiate(playerGO, playerGO.transform.parent);
+                Hero hero = heroFactory.CreateHero(heroClass, playerObj);
+                PlayerHeroes.Add(hero);
+                OnHeroCreated?.Invoke(hero, true);
+            }
 
-            playerAvatar.SetAvatar(PlayerHero);
-            enemyAvatar.SetAvatar(EnemyHero);
+            // Eroi nemici
+            for (int i = 0; i < 2; i++)
+            {
+                HeroClass enemyClass = HeroArenaUtils.GetRandomEnumValue<HeroClass>(1, 0);
+                GameObject enemyObj = Instantiate(enemyGO, enemyGO.transform.parent);
+                Hero enemy = heroFactory.CreateHero(enemyClass, enemyObj);
+                EnemyHeroes.Add(enemy);
+                OnHeroCreated?.Invoke(enemy, false);
+            }
+
+            // Avatar
+            if (PlayerHeroes.Count > 0) playerAvatar.SetAvatar(PlayerHeroes[0]);
+            if (EnemyHeroes.Count > 0) enemyAvatar.SetAvatar(EnemyHeroes[0]);
+
             GameModeManager.Instance.SetTurnState(TurnState.PlayerTurn);
-
             UIManager.Instance.OnFadeInComplete -= StartGame;
         }
+
 
         public void EndGame(bool isPlayerHeroDead)
         {

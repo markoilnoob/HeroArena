@@ -30,18 +30,18 @@ namespace HeroArena.UI
 
         public override void BroadcastInitialValues()
         {
-            if (ArenaGameManager.Instance.PlayerHero)
+            if (ArenaGameManager.Instance.PlayerHeroes[0])
             {
-                OnDescriptionReady?.Invoke(ArenaGameManager.Instance.PlayerHero.GetHeroDescription(), true);
-                OnAbilitiesReady?.Invoke(ArenaGameManager.Instance.PlayerHero.GetHeroAbilities(), true);
-                OnHeroStatsCalculated?.Invoke(ArenaGameManager.Instance.PlayerHero.HeroStats, true);
+                OnDescriptionReady?.Invoke(ArenaGameManager.Instance.PlayerHeroes[0].GetHeroDescription(), true);
+                OnAbilitiesReady?.Invoke(ArenaGameManager.Instance.PlayerHeroes[0].GetHeroAbilities(), true);
+                OnHeroStatsCalculated?.Invoke(ArenaGameManager.Instance.PlayerHeroes[0].HeroStats, true);
             }
 
-            if (ArenaGameManager.Instance.EnemyHero)
+            if (ArenaGameManager.Instance.EnemyHeroes[0])
             {
-                OnDescriptionReady?.Invoke(ArenaGameManager.Instance.EnemyHero.GetHeroDescription(), false);
-                OnAbilitiesReady?.Invoke(ArenaGameManager.Instance.EnemyHero.GetHeroAbilities(), false);
-                OnHeroStatsCalculated?.Invoke(ArenaGameManager.Instance.EnemyHero.HeroStats, false);
+                OnDescriptionReady?.Invoke(ArenaGameManager.Instance.EnemyHeroes[0].GetHeroDescription(), false);
+                OnAbilitiesReady?.Invoke(ArenaGameManager.Instance.EnemyHeroes[0].GetHeroAbilities(), false);
+                OnHeroStatsCalculated?.Invoke(ArenaGameManager.Instance.EnemyHeroes[0].HeroStats, false);
             }
         }
     }

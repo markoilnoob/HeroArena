@@ -69,7 +69,7 @@ namespace HeroArena
         {
             bool IsPlayer = false;
             
-            IsPlayer = ArenaGameManager.Instance.PlayerHero == this;
+            IsPlayer = ArenaGameManager.Instance.PlayerHeroes[0] == this;
             
             OnHeroStatsUpdated?.Invoke(HeroStats, IsPlayer);
 

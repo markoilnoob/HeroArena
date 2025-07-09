@@ -25,18 +25,18 @@ namespace HeroArena
         public void ActivateAbility()
         {
             // TODO: Single controller for each hero
-            if (ArenaGameManager.Instance.PlayerHero == hero)
+            if (ArenaGameManager.Instance.PlayerHeroes[0] == hero)
             {
                 if (GameModeManager.Instance.GetTurnState() != TurnState.PlayerTurn) return;
-                abilityContext.Source = ArenaGameManager.Instance.PlayerHero;
-                abilityContext.Target = ArenaGameManager.Instance.EnemyHero;
+                abilityContext.Source = ArenaGameManager.Instance.PlayerHeroes[0];
+                abilityContext.Target = ArenaGameManager.Instance.EnemyHeroes[0];
                 GameModeManager.Instance.SetTurnState(TurnState.EnemyTurn);
             }
             else
             {
                 if (GameModeManager.Instance.GetTurnState() != TurnState.EnemyTurn) return;
-                abilityContext.Source = ArenaGameManager.Instance.EnemyHero;
-                abilityContext.Target = ArenaGameManager.Instance.PlayerHero;
+                abilityContext.Source = ArenaGameManager.Instance.EnemyHeroes[0];
+                abilityContext.Target = ArenaGameManager.Instance.PlayerHeroes[0];
                 OnEnemyTurn?.Invoke();
                 GameModeManager.Instance.SetTurnState(TurnState.PlayerTurn);
             }
