@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!82 &171953698 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8289427167062685726, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+  m_PrefabInstance: {fileID: 196826420612568792}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &188358728
 GameObject:
   m_ObjectHideFlags: 0
@@ -505,10 +510,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1221469526080123994, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: musicSource
+      value: 
+      objectReference: {fileID: 171953698}
     - target: {fileID: 6323175003169968497, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
       propertyPath: IMG_Fade
       value: 
       objectReference: {fileID: 188358730}
+    - target: {fileID: 8289427167062685726, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289427167062685726, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8289427167062685726, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: f80bfdb5e55a28f45b828cc8c7f0fac3, type: 3}
+    - target: {fileID: 8289427167062685726, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f80bfdb5e55a28f45b828cc8c7f0fac3, type: 3}
     - target: {fileID: 8697306884071731431, guid: a79c199476245b34ebc04dad2fcbec17, type: 3}
       propertyPath: m_Name
       value: --- Managers
